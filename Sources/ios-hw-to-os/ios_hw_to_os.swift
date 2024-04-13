@@ -1,12 +1,12 @@
 import Foundation
 
 public struct Mappings: Codable {
-    var devices: [Device]
+    public var devices: [Device]
 }
 
 public struct Device: Codable {
-    var hardware: String
-    var version: String
+    public var hardware: String
+    public var version: String
 }
 
 public func readMappings() -> Mappings? {
