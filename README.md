@@ -1,4 +1,4 @@
-# ios-hw-to-os SPM package
+# ios-hw-to-os-spm
 
 This is the Swift Package Manager package for [ios-hw-to-os](https://github.com/bes/ios-hw-to-os).
 
