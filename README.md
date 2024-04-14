@@ -4,6 +4,11 @@ This is the Swift Package Manager package for [ios-hw-to-os](https://github.com/
 
 Please see the main project for more information.
 
+## Contribtions
+
+Please contribute to [ios-hw-to-os](https://github.com/bes/ios-hw-to-os) to update
+the JSON mappings, and to this repository to improve the Swift API.
+
 ## How to use
 
 Add `https://github.com/bes/ios-hw-to-os-spm` to either your own Swift package,
