@@ -13,7 +13,7 @@ final class ios_hw_to_osTests: XCTestCase {
             return
         }
         // This device will always be on this iOS version
-        XCTAssertEqual(device.version, "16.7.7")
+        XCTAssertEqual(device.version, "16.7.12")
     }
 
     func testIosHwToOsDevice() throws {
@@ -23,6 +23,6 @@ final class ios_hw_to_osTests: XCTestCase {
             return
         }
         // This device will always be on this iOS version
-        XCTAssertEqual(device.version, "16.7.7")
+        XCTAssertEqual(device.version, "16.7.12")
     }
 }
