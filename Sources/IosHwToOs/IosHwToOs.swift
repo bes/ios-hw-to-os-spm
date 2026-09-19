@@ -1,29 +1,26 @@
 import Foundation
 
-private var cache: IosHwToOsMappings?
+private let cache: IosHwToOsMappings? = {
+    guard let mappingsUrl = Bundle.module.url(forResource: "mappings", withExtension: "json") else {
+        return nil
+    }
+    do {
+        let data = try Data(contentsOf: mappingsUrl)
+        let decoder = JSONDecoder()
+        return try decoder.decode(IosHwToOsMappings.self, from: data)
+    } catch {
+        return nil
+    }
+}()
 
-public struct IosHwToOsMappings: Codable {
+public struct IosHwToOsMappings: Codable, Sendable {
     public var devices: [IosHwToOsDevice]
     public var highestVersion: String
-    
+
     public static func all() -> IosHwToOsMappings? {
-        if let cache {
-            return cache
-        }
-        guard let mappingsUrl = Bundle.module.url(forResource: "mappings", withExtension: "json") else {
-            return nil
-        }
-        do {
-            let data = try Data(contentsOf: mappingsUrl)
-            let decoder = JSONDecoder()
-            let mappings = try decoder.decode(IosHwToOsMappings.self, from: data)
-            cache = mappings
-            return mappings
-        } catch {
-            return nil
-        }
+        return cache
     }
-    
+
     public static func highestAvailableVersion() -> String? {
         guard let mappings = IosHwToOsMappings.all() else {
             return nil
@@ -32,10 +29,10 @@ public struct IosHwToOsMappings: Codable {
     }
 }
 
-public struct IosHwToOsDevice: Codable {
+public struct IosHwToOsDevice: Codable, Sendable {
     public var hardware: String
     public var version: String
-    
+
     public static func get(hardware: String) -> IosHwToOsDevice? {
         guard let mappings = IosHwToOsMappings.all() else {
             return nil
