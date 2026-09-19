@@ -4,6 +4,7 @@ private var cache: IosHwToOsMappings?
 
 public struct IosHwToOsMappings: Codable {
     public var devices: [IosHwToOsDevice]
+    public var highestVersion: String
     
     public static func all() -> IosHwToOsMappings? {
         if let cache {
@@ -21,6 +22,13 @@ public struct IosHwToOsMappings: Codable {
         } catch {
             return nil
         }
+    }
+    
+    public static func highestAvailableVersion() -> String? {
+        guard let mappings = IosHwToOsMappings.all() else {
+            return nil
+        }
+        return mappings.highestVersion
     }
 }
 

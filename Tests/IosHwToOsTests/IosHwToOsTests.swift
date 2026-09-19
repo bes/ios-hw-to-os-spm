@@ -7,13 +7,14 @@ final class ios_hw_to_osTests: XCTestCase {
             XCTAssert(false)
             return
         }
+        XCTAssertEqual(mappings.highestVersion, "27.0")
         // This device will never get a new iOS version
         guard let device = mappings.devices.first(where: { $0.hardware == "iPhone10,1"}) else {
             XCTAssert(false)
             return
         }
         // This device will always be on this iOS version
-        XCTAssertEqual(device.version, "16.7.12")
+        XCTAssertEqual(device.version, "16.7.16")
     }
 
     func testIosHwToOsDevice() throws {
@@ -23,6 +24,6 @@ final class ios_hw_to_osTests: XCTestCase {
             return
         }
         // This device will always be on this iOS version
-        XCTAssertEqual(device.version, "16.7.12")
+        XCTAssertEqual(device.version, "16.7.16")
     }
 }
